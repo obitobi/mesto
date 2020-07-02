@@ -1,0 +1,7 @@
+.elements__stuff {
+    display: flex;
+    padding: 0 21px 0 21px;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: auto;
+}

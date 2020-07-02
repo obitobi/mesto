@@ -1,0 +1,9 @@
+.elements__card {
+    height: 361px;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

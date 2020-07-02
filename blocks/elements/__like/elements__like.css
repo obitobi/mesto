@@ -1,0 +1,9 @@
+.elements__like {
+    background-image: url("../../../images/Vectoddr.svg");
+    border: none;
+    font-size: 0;
+    width: 22px;
+    height: 19px;
+    background-size: cover;
+    background-color: white;
+}

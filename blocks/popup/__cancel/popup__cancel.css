@@ -1,0 +1,28 @@
+.popup__cancel {
+    width: 41px;
+    height: 41px;
+    background-image: url("../../../images/Vector.svg");
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    border: none;
+    font-size: 0;
+    background-color: rgba(0,0,0,0);
+    transform: rotate(45deg);
+}
+
+.popup__cancel:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__cancel {
+        width: 25px;
+        height: 25px;
+        top: -20px;
+        right: -20px;
+    }
+}
