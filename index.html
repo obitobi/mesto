@@ -11,7 +11,6 @@
 <body class="root">
 <header class="header">
     <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
-    <div class="header__line"></div>
 </header>
 <main class="content">
     <section class="profile">
@@ -19,65 +18,73 @@
         <div class="profile__info">
             <div class="profile__main-info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__edit"></button>
+                <button class="profile__edit" type="button" aria-label="Редактировать профиль"></button>
             </div>
+            <!--Проверил макет, сайз: 14, высота: 17-->
             <p class="profile__description">Исследователь океана</p>
         </div>
-        <div class="profile__add-button"></div>
+        <button class="profile__add-button" type="button" aria-label="Добавить фотографию"></button>
     </section>
     <section class="elements">
+        <!--
+        Я так и думал, что сделаете такое замечание с пометкой "можно лучше".
+        Неужели в реальной работе списки используются на столько широко?
+        Вы бы тут использовали список, если бы делали этот проект?
+        (просто хочу разобраться)
+           -->
         <div class="elements__card">
-            <img src="images/kirill-pershin-1088404-firstPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="images/kirill-pershin-1088404-firstPic.jpg" alt="Кирпичное здание" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Карачаевск</p>
-                <button class="elements__like"></button>
+                <!-- Что имеется ввиду под "добавить активное состояние, сделал псевдокласс active -->
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
         <div class="elements__card">
-            <img src="./images/kirill-pershin-1404681-secondPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="./images/kirill-pershin-1404681-secondPic.jpg" alt="Степь" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Гора Эльбрус</p>
-                <button class="elements__like"></button>
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
         <div class="elements__card">
-            <img src="./images/kirill-pershin-1556355-thirdPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="./images/kirill-pershin-1556355-thirdPic.jpg" alt="Гора" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Домбай</p>
-                <button class="elements__like"></button>
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
         <div class="elements__card">
-            <img src="./images/kirill-pershin-1088404-firstPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="./images/kirill-pershin-1088404-firstPic.jpg" alt="Степь" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Гора Эльбрус</p>
-                <button class="elements__like"></button>
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
         <div class="elements__card">
-            <img src="./images/kirill-pershin-1404681-secondPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="./images/kirill-pershin-1404681-secondPic.jpg" alt="Гора" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Домбай</p>
-                <button class="elements__like"></button>
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
         <div class="elements__card">
-            <img src="./images/kirill-pershin-1556355-thirdPic.jpg" alt="Картинка" class="elements__pic">
+            <img src="./images/kirill-pershin-1556355-thirdPic.jpg" alt="Кирпичное здание" class="elements__pic">
             <div class="elements__stuff">
                 <p class="elements__pic-description">Карачаево-Черкесск</p>
-                <button class="elements__like"></button>
+                <button class="elements__like" type="submit" aria-label="Лайк"></button>
             </div>
         </div>
     </section>
 </main>
-<div class="popup popup_opened">
-    <div class="popup__container">
+<div class="popup">
+    <form class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__field" placeholder="Введите имя">
-        <input type="text" class="popup__field" placeholder="Введите описание">
+        <input type="text" class="popup__field" placeholder="Введите имя" name="nameField">
+        <input type="text" class="popup__field" placeholder="Введите описание" name="descriptionField">
         <button class="popup__submit">Сохранить</button>
         <button class="popup__cancel"></button>
-    </div>
+    </form>
 </div>
 <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>

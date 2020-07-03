@@ -12,6 +12,7 @@
     background-repeat: no-repeat;
     background-position: center;
     margin-left: auto;
+    background-color: black;
 }
 
 .profile__add-button:hover {
@@ -19,7 +20,7 @@
     opacity: .6;
 }
 
-@media screen and (max-width: 916px) {
+@media screen and (max-width: 1000px) {
     .profile__add-button {
         width: 282px;
         margin: auto;

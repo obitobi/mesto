@@ -7,3 +7,7 @@
     background-size: cover;
     background-color: white;
 }
+
+.elements__like:active {
+    background-color: red;
+}

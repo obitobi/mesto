@@ -1,17 +1,17 @@
 .profile__description {
-    font-weight: 400;
+    font-weight: normal;
     font-size: 18px;
     line-height: 22px;
 }
 
-@media screen and (max-width: 916px) {
+@media screen and (max-width: 1000px) {
     .profile__description {
         align-self: center;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .profile__name {
+    .profile__description {
         font-size: 14px;
         line-height: 17px;
     }

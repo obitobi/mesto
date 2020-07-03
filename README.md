@@ -8,5 +8,5 @@
 * Flex
 * Grid
 
-###Ссылка на GitHub Pages
+### Ссылка на GitHub Pages
 https://obitobi.github.io/mesto/index.html
