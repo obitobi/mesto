@@ -3,11 +3,5 @@
 @import url('./__pic/elements__pic.css');
 @import url('./__stuff/elements__stuff.css');
 @import url('./__pic-description/elements__pic-description.css');
+@import url('./__list/elements__list.css');
 
-
-.elements {
-    display: grid;
-    grid-gap: 21px 18px;
-    grid-template-columns: repeat(auto-fill, 282px);
-    justify-content: center;
-}

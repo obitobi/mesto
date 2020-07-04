@@ -8,6 +8,7 @@
     background-color: white;
 }
 
-.elements__like:active {
-    background-color: red;
+.elements__like:hover {
+    cursor: pointer;
+    opacity: .6;
 }
