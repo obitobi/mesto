@@ -1,0 +1,7 @@
+.pic-popup__main {
+    max-height: 75vh;
+    max-width: 75vw;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 10px;
+}

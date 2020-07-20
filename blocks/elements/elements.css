@@ -4,4 +4,5 @@
 @import url('./__stuff/elements__stuff.css');
 @import url('./__pic-description/elements__pic-description.css');
 @import url('./__list/elements__list.css');
-
+@import url("./__like/_liked/elements__like_liked.css");
+@import url("./__trash/elements__trash.css");
