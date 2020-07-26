@@ -4,6 +4,7 @@
 @import url("./__cancel/pic-popup__cancel.css");
 
 .pic-popup {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,5 +13,7 @@
     width: 100%;
     justify-content: center;
     align-self: center;
+    visibility: hidden;
     opacity: 0;
+    transition:visibility 0s linear 0.5s,opacity 0.5s linear;
 }

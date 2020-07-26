@@ -1,0 +1,25 @@
+.popup-place__submit {
+    width: 100%;
+    background-color: black;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    font-style: normal;
+    padding: 13px 0 18px;
+    border: none;
+    color: white;
+    outline: none;
+}
+
+.popup-place__submit:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .popup-place__submit {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 8px 0 10px;
+    }
+}

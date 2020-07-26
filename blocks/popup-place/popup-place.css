@@ -1,0 +1,20 @@
+@import url('__field/popup-place__field.css');
+@import url('__title/popup-place__title.css');
+@import url('__container/popup-place__container.css');
+@import url('__cancel/popup-place__cancel.css');
+@import url('__submit/popup-place__submit.css');
+
+.popup-place {
+    display: flex;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

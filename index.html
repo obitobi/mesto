@@ -29,17 +29,34 @@
         </ul>
     </section>
 </main>
-<template id="popup">
-    <div class="popup popup_opened">
-        <form class="popup__container" name="popupForm">
-            <h2 class="popup__title"></h2>
-            <input type="text" class="popup__field" placeholder="" name="nameField">
-            <input type="text" class="popup__field" placeholder="" name="descriptionField">
-            <button class="popup__submit" type="submit"></button>
-            <button class="popup__cancel" type="reset"></button>
-        </form>
+<div class="popup">
+    <form class="popup__container" name="popupForm">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__field" placeholder="Введите имя" name="nameField" id="popup__field-name">
+        <input type="text" class="popup__field" placeholder="Введите описание" name="descriptionField"
+               id="popup__field-desc">
+        <button class="popup__submit" type="submit">Сохранить</button>
+        <button class="popup__cancel" type="reset"></button>
+    </form>
+</div>
+<div class="popup-place">
+    <form class="popup-place__container" name="popup-placeForm">
+        <h2 class="popup-place__title">Новое место</h2>
+        <input type="text" class="popup-place__field" placeholder="Название" name="nameField"
+               id="popup-place__field-name">
+        <input type="text" class="popup-place__field" placeholder="Ссылка на картинку" name="descriptionField"
+               id="popup-place__field-desc">
+        <button class="popup-place__submit" type="submit">Сохранить</button>
+        <button class="popup-place__cancel" type="reset"></button>
+    </form>
+</div>
+<div class="pic-popup">
+    <div class="pic-popup__container">
+        <img src="" alt="" class="pic-popup__main">
+        <p class="pic-popup__subtitle"></p>
+        <button class="pic-popup__cancel" type="reset"></button>
     </div>
-</template>
+</div>
 <template id="elements__card">
     <li class="elements__card">
         <img src="" alt="" class="elements__pic">
@@ -49,15 +66,6 @@
             <button class="elements__like" type="button" aria-label="Лайк"></button>
         </div>
     </li>
-</template>
-<template id="pic-popup">
-    <div class="pic-popup pic-popup_opened">
-        <div class="pic-popup__container">
-            <img src="" alt="" class="pic-popup__main">
-            <p class="pic-popup__subtitle"></p>
-            <button class="pic-popup__cancel" type="reset"></button>
-        </div>
-    </div>
 </template>
 <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
