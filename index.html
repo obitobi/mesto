@@ -29,28 +29,33 @@
         </ul>
     </section>
 </main>
-<div class="popup">
-    <form class="popup__container" name="popupForm">
+<div class="popup" tabindex="-1">
+    <form class="popup__container" name="popupForm" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__field" placeholder="Введите имя" name="nameField" id="popup__field-name">
+        <input type="text" class="popup__field" placeholder="Введите имя" name="nameField"
+               id="popup__field-name" required minlength="2" maxlength="40">
+        <span class="popup__input-error" id="popup__field-name-error"></span>
         <input type="text" class="popup__field" placeholder="Введите описание" name="descriptionField"
-               id="popup__field-desc">
-        <button class="popup__submit" type="submit">Сохранить</button>
+               id="popup__field-desc" required minlength="2" maxlength="200">
+        <span class="popup__input-error" id="popup__field-desc-error"></span>
+        <button class="popup__submit popup__submit_disabled" type="submit">Сохранить</button>
         <button class="popup__cancel" type="reset"></button>
     </form>
 </div>
-<div class="popup" id="popup-place">
-    <form class="popup__container" name="popup-placeForm">
+<div class="popup" id="popup-place" tabindex="-1">
+    <form class="popup__container" name="popup-placeForm" novalidate>
         <h2 class="popup__title">Новое место</h2>
         <input type="text" class="popup__field" placeholder="Название" name="nameField"
-               id="popup-place__field-name">
-        <input type="text" class="popup__field" placeholder="Ссылка на картинку" name="descriptionField"
-               id="popup-place__field-desc">
-        <button class="popup__submit" type="submit">Сохранить</button>
+               id="popup-place__field-name" required minlength="1" maxlength="30">
+        <span class="popup__input-error" id="popup-place__field-name-error"></span>
+        <input type="url" class="popup__field" placeholder="Ссылка на картинку" name="descriptionField"
+               id="popup-place__field-desc" required>
+        <span class="popup__input-error" id="popup-place__field-desc-error"></span>
+        <button class="popup__submit popup__submit_disabled" type="submit">Сохранить</button>
         <button class="popup__cancel" type="reset"></button>
     </form>
 </div>
-<div class="pic-popup">
+<div class="pic-popup" tabindex="-1">
     <div class="pic-popup__container">
         <img src="" alt="" class="pic-popup__main">
         <p class="pic-popup__subtitle"></p>
@@ -70,6 +75,7 @@
 <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 </footer>
+<script src="scripts/validate.js"></script>
 <script src="scripts/index.js"></script>
 </body>
 </html>

@@ -104,15 +104,26 @@ function removeCard(event) {
     event.target.parentElement.remove();
 }
 
+function clickOnOverlay(event, modalType) {
+    let evtClasses = event.target.classList;
+    if (evtClasses.contains('popup') || evtClasses.contains('pic-popup')) {
+        toggleModal(modalType);
+    }
+}
+
 editProfileBtn.addEventListener('click', function () {
     toggleModal(profileModal);
     nameInput.value = profileName.textContent;
     descInput.value = profileDesc.textContent;
 });
+
 closeProfileModal.addEventListener('click', function () {
     toggleModal(profileModal);
 });
 formProfile.addEventListener('submit', submitProfileInfo);
+profileModal.addEventListener('click', evt => clickOnOverlay(evt, profileModal));
+addCardModal.addEventListener('click', evt => clickOnOverlay(evt, addCardModal));
+picModal.addEventListener('click', evt => clickOnOverlay(evt, picModal));
 addCardBtn.addEventListener('click', function () {
     toggleModal(addCardModal);
 });
@@ -127,3 +138,18 @@ closePicModal.addEventListener('click', function () {
 initialCards.forEach(function (item) {
     renderCard(createCard(item.link, item.name));
 });
+profileModal.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+        toggleModal(profileModal);
+    }
+});
+picModal.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+        toggleModal(picModal);
+    }
+})
+addCardModal.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+        toggleModal(addCardModal);
+    }
+})

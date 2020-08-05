@@ -1,0 +1,24 @@
+.popup__input-error {
+    visibility: hidden;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    align-self: flex-start;
+    color: #FF0000;
+    margin-bottom: 13px;
+}
+
+.popup__input-error:nth-of-type(2n) {
+    margin-bottom: 31px;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__input-error {
+        margin-bottom: 7px;
+    }
+
+    .popup__input-error:nth-of-type(2n) {
+        margin-bottom: 20px;
+    }
+}
