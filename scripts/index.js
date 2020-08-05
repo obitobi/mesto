@@ -1,3 +1,5 @@
+import './validate.js';
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -101,8 +103,7 @@ function submitCard(event) {
     picNameInput.value = '';
     linkPicInput.value = '';
     const submitBtn = event.target.querySelector('.popup__submit');
-    submitBtn.classList.add('popup__submit_disabled');
-    submitBtn.disabled = true;
+    disableBtn(submitBtn);
 }
 
 //Простановка лайка
