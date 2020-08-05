@@ -101,7 +101,6 @@ function submitCard(event) {
     picNameInput.value = '';
     linkPicInput.value = '';
     const submitBtn = event.target.querySelector('.popup__submit');
-    console.log(submitBtn);
     submitBtn.classList.add('popup__submit_disabled');
     submitBtn.disabled = true;
 }
