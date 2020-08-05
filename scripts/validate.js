@@ -28,7 +28,7 @@ function hasInvalidInput(inputList) {
 }
 
 function toggleBtnState(inputList, btnEl) {
-    if(hasInvalidInput(inputList)) {
+    if (hasInvalidInput(inputList)) {
         btnEl.classList.add('popup__submit_disabled');
         btnEl.disabled = true;
     } else {

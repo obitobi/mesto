@@ -4,7 +4,6 @@
     object-fit: cover;
     object-position: center;
     margin-bottom: 25px;
-    filter: brightness(60%);
 }
 
 .elements__pic:hover {

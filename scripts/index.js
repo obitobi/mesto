@@ -33,6 +33,7 @@ const picModalLink = document.querySelector('.pic-popup__main');
 const picModalDesc = document.querySelector('.pic-popup__subtitle');
 const closePicModal = document.querySelector('.pic-popup__cancel');
 
+
 const editProfileBtn = document.querySelector('.profile__edit');
 const profileModal = document.querySelector('.popup');
 const closeProfileModal = document.querySelector('.popup__cancel');
@@ -99,6 +100,10 @@ function submitCard(event) {
     closeModal(addCardModal);
     picNameInput.value = '';
     linkPicInput.value = '';
+    const submitBtn = event.target.querySelector('.popup__submit');
+    console.log(submitBtn);
+    submitBtn.classList.add('popup__submit_disabled');
+    submitBtn.disabled = true;
 }
 
 //Простановка лайка
@@ -111,7 +116,7 @@ function removeCard(event) {
 }
 
 function clickOnOverlay(event, modalType) {
-    let evtClasses = event.target.classList;
+    const evtClasses = event.target.classList;
     if (evtClasses.contains('popup') || evtClasses.contains('pic-popup')) {
         closeModal(modalType);
     }
