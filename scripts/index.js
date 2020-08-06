@@ -45,6 +45,7 @@ const descInput = document.querySelector('#popup__field-desc');
 
 const addCardBtn = document.querySelector('.profile__add-button');
 const addCardModal = document.querySelector('#popup-place');
+const submitBtn = addCardModal.querySelector('.popup__submit');
 const closeCardModal = addCardModal.querySelector('.popup__cancel');
 const formCard = addCardModal.querySelector('.popup__container');
 const picNameInput = addCardModal.querySelector('#popup-place__field-name');
@@ -102,7 +103,6 @@ function submitCard(event) {
     closeModal(addCardModal);
     picNameInput.value = '';
     linkPicInput.value = '';
-    const submitBtn = event.target.querySelector('.popup__submit');
     disableBtn(submitBtn);
 }
 

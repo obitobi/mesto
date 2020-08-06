@@ -59,7 +59,7 @@ function enableValidation(validSettings) {
         i.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        setEventListener(i, validationSettings);
+        setEventListener(i, validSettings);
     });
 }
 
