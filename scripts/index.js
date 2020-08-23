@@ -1,31 +1,5 @@
-import './validate.js';
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+import {Card} from './Card.js';
+// import {FormValidator} from './FormValidator.js';
 
 const profileName = document.querySelector('.profile__name');
 const profileDesc = document.querySelector('.profile__description');
@@ -51,21 +25,7 @@ const formCard = addCardModal.querySelector('.popup__container');
 const picNameInput = addCardModal.querySelector('#popup-place__field-name');
 const linkPicInput = addCardModal.querySelector('#popup-place__field-desc');
 
-const cardTemplate = document.querySelector('#elements__card').content;
 const cardsList = document.querySelector('.elements__list');
-
-function createCard(link, description) {
-    const cardElement = cardTemplate.cloneNode(true);
-    cardElement.querySelector('.elements__pic').src = link;
-    cardElement.querySelector('.elements__pic-description').textContent = description;
-    cardElement.querySelector('.elements__like').addEventListener('click', submitLike);
-    cardElement.querySelector('.elements__trash').addEventListener('click', removeCard);
-    cardElement.querySelector('.elements__pic').addEventListener('click', function (event) {
-        openModal(picModal);
-        getPicInfo(event);
-    });
-    return cardElement;
-}
 
 function renderCard(cardEl) {
     cardsList.prepend(cardEl);
@@ -79,6 +39,8 @@ function openModal(modalType) {
 function closeModal(modalType) {
     modalType.classList.remove('popup_opened');
     document.removeEventListener('keydown', evt => closingWithEsc(evt, modalType));
+    picNameInput.value = '';
+    linkPicInput.value = '';
 }
 
 function getProfileInfo() {
@@ -97,16 +59,20 @@ function getPicInfo(event) {
     picModalDesc.textContent = event.target.parentElement.querySelector('.elements__pic-description').textContent;
 }
 
+function disableBtn(btnEl) {
+    btnEl.classList.add('popup__submit_disabled');
+    btnEl.disabled = true;
+}
+
 function submitCard(event) {
     event.preventDefault();
-    renderCard(createCard(linkPicInput.value, picNameInput.value));
+    renderCard(new Card(picNameInput.value, linkPicInput.value, '#elements__card').getCard());
     closeModal(addCardModal);
     picNameInput.value = '';
     linkPicInput.value = '';
     disableBtn(submitBtn);
 }
 
-//Простановка лайка
 function submitLike(event) {
     event.target.classList.toggle('elements__like_liked');
 }
@@ -128,13 +94,11 @@ function closingWithEsc(event, modalType) {
     }
 }
 
-
 editProfileBtn.addEventListener('click', function () {
     openModal(profileModal);
     nameInput.value = profileName.textContent;
     descInput.value = profileDesc.textContent;
 });
-
 
 closeProfileModal.addEventListener('click', function () {
     closeModal(profileModal);
@@ -154,6 +118,4 @@ closePicModal.addEventListener('click', function () {
     closeModal(picModal);
 });
 
-initialCards.forEach(function (item) {
-    renderCard(createCard(item.link, item.name));
-});
+export {openModal, removeCard, submitLike, getPicInfo, picModal, renderCard}
