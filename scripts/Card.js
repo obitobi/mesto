@@ -1,4 +1,4 @@
-import  {openModal, removeCard, submitLike, getPicInfo, picModal, renderCard} from './index.js';
+import  {openModal, removeCard, submitLike, getPicInfo, picModal, renderCard} from './utils.js';
 
 export class Card {
 
@@ -31,6 +31,7 @@ export class Card {
     getCard() {
         this._cardElement = this._getCardTemplate();
         this._cardElement.querySelector('.elements__pic').src = this._cardLink;
+        this._cardElement.querySelector('.elements__pic').alt = this._cardName;
         this._cardElement.querySelector('.elements__pic-description').textContent = this._cardName;
         this._setSubmitLikeListener(this._cardElement, '.elements__like');
         this._setRemoveCardListener(this._cardElement, '.elements__trash');
