@@ -22,7 +22,7 @@ export class Card {
     }
 
     _setToggleCardListener(cardEl, selector) {
-        cardEl.querySelector(selector).addEventListener('click', function (event) {
+        cardEl.querySelector(selector).addEventListener('click',(event) => {
             openModal(picModal);
             getPicInfo(event);
         });

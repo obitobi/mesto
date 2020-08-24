@@ -50,27 +50,19 @@ function clickOnOverlay(event, modalType) {
     }
 }
 
-editProfileBtn.addEventListener('click', function () {
+editProfileBtn.addEventListener('click', () => {
     openModal(profileModal);
     nameInput.value = profileName.textContent;
     descInput.value = profileDesc.textContent;
 });
 
-closeProfileModal.addEventListener('click', function () {
-    closeModal(profileModal);
-});
+closeProfileModal.addEventListener('click', () => { closeModal(profileModal) });
 
 formProfile.addEventListener('submit', submitProfileInfo);
-profileModal.addEventListener('click', evt => clickOnOverlay(evt, profileModal));
-addCardModal.addEventListener('click', evt => clickOnOverlay(evt, addCardModal));
-picModal.addEventListener('click', evt => clickOnOverlay(evt, picModal));
-addCardBtn.addEventListener('click', function () {
-    openModal(addCardModal);
-});
-closeCardModal.addEventListener('click', function () {
-    closeModal(addCardModal);
-});
+profileModal.addEventListener('click', (evt) => clickOnOverlay(evt, profileModal));
+addCardModal.addEventListener('click', (evt) => clickOnOverlay(evt, addCardModal));
+picModal.addEventListener('click', (evt) => clickOnOverlay(evt, picModal));
+addCardBtn.addEventListener('click', () => { openModal(addCardModal) });
+closeCardModal.addEventListener('click', () => { closeModal(addCardModal) });
 formCard.addEventListener('submit', submitCard);
-closePicModal.addEventListener('click', function () {
-    closeModal(picModal);
-});
+closePicModal.addEventListener('click', () => { closeModal(picModal) });

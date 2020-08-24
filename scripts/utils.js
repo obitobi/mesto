@@ -6,24 +6,24 @@ const addCardModal = document.querySelector('#popup-place');
 const picNameInput = addCardModal.querySelector('#popup-place__field-name');
 const linkPicInput = addCardModal.querySelector('#popup-place__field-desc');
 
+
+function closingWithEsc(evt) {
+    if (evt.key === 'Escape') {
+        //Ничего другого более адекватного придумать не смог.
+        closeModal(document.querySelector('.popup_opened'));
+    }
+}
+
 function closeModal(modalType) {
     modalType.classList.remove('popup_opened');
-    document.removeEventListener('keydown',function (evt) {
-        closingWithEsc(evt, modalType);
-    });
+    document.removeEventListener('keydown', closingWithEsc);
     picNameInput.value = '';
     linkPicInput.value = '';
 }
 
-function closingWithEsc(event, modalType) {
-    if (event.key === 'Escape') {
-        closeModal(modalType);
-    }
-}
-
 function openModal(modalType) {
     modalType.classList.add('popup_opened');
-    document.addEventListener('keydown', evt => closingWithEsc(evt, modalType));
+    document.addEventListener('keydown', closingWithEsc);
 }
 
 function submitLike(event) {
@@ -46,5 +46,5 @@ function renderCard(cardEl) {
 
 export {openModal, submitLike, removeCard,
         getPicInfo, picModal, renderCard,
-        addCardModal, closeModal, closingWithEsc,
+        addCardModal, closeModal,
         picNameInput, linkPicInput}
