@@ -1,32 +1,36 @@
-import {renderCard, openModal, picModal, addCardModal, closeModal, picNameInput, linkPicInput} from './utils.js';
+import { submitLike, removeCard, renderCard, handlerCardClick } from './utils.js';
 import {Card} from './Card.js';
+import {UserInfo} from './UserInfo.js';
+import {PopupWithForm} from "./PopupWithForm.js";
 
-const profileName = document.querySelector('.profile__name');
-const profileDesc = document.querySelector('.profile__description');
-const closePicModal = document.querySelector('.pic-popup__cancel');
+const userSelectors = {
+    name: '.profile__name',
+    info: '.profile__description'
+}
+
+const userInfo = new UserInfo(userSelectors);
+const editProfileModal = new PopupWithForm('.popup', submitProfileInfo);
+editProfileModal.setEventListeners();
+const addCardModal = new PopupWithForm('#popup-place', submitCard);
+addCardModal.setEventListeners();
 
 const editProfileBtn = document.querySelector('.profile__edit');
-const profileModal = document.querySelector('.popup');
-const closeProfileModal = document.querySelector('.popup__cancel');
-const formProfile = document.querySelector('.popup__container');
 const nameInput = document.querySelector('#popup__field-name');
 const descInput = document.querySelector('#popup__field-desc');
 
 const addCardBtn = document.querySelector('.profile__add-button');
-const submitBtn = addCardModal.querySelector('.popup__submit');
-const closeCardModal = addCardModal.querySelector('.popup__cancel');
-const formCard = addCardModal.querySelector('.popup__container');
+const submitBtn = document.querySelector('.popup__submit');
 
 
-function getProfileInfo() {
-    profileName.textContent = nameInput.value;
-    profileDesc.textContent = descInput.value;
+function setProfileInfoInPopup({name, info}) {
+    nameInput.value = name;
+    descInput.value = info;
 }
 
 function submitProfileInfo(event) {
     event.preventDefault();
-    getProfileInfo();
-    closeModal(profileModal);
+    userInfo.setUserInfo(nameInput.value, descInput.value);
+    editProfileModal.close();
 }
 
 function disableBtn(btnEl) {
@@ -36,33 +40,28 @@ function disableBtn(btnEl) {
 
 function submitCard(event) {
     event.preventDefault();
-    renderCard(new Card(picNameInput.value, linkPicInput.value, '#elements__card').getCard());
-    closeModal(addCardModal);
-    picNameInput.value = '';
-    linkPicInput.value = '';
+    renderCard(new Card(
+        addCardModal.getFirstFieldValue(),
+        addCardModal.getSecondFieldValue(),
+        '#elements__card',
+        handlerCardClick).getCard());
+    addCardModal.close();
     disableBtn(submitBtn);
 }
 
-function clickOnOverlay(event, modalType) {
+function clickOnOverlay(event) {
     const evtClasses = event.target.classList;
     if (evtClasses.contains('popup') || evtClasses.contains('pic-popup')) {
-        closeModal(modalType);
+        this.close();
     }
 }
 
 editProfileBtn.addEventListener('click', () => {
-    openModal(profileModal);
-    nameInput.value = profileName.textContent;
-    descInput.value = profileDesc.textContent;
+    editProfileModal.open();
+    setProfileInfoInPopup(userInfo.getUserInfo());
 });
 
-closeProfileModal.addEventListener('click', () => { closeModal(profileModal) });
-
-formProfile.addEventListener('submit', submitProfileInfo);
-profileModal.addEventListener('click', (evt) => clickOnOverlay(evt, profileModal));
-addCardModal.addEventListener('click', (evt) => clickOnOverlay(evt, addCardModal));
-picModal.addEventListener('click', (evt) => clickOnOverlay(evt, picModal));
-addCardBtn.addEventListener('click', () => { openModal(addCardModal) });
-closeCardModal.addEventListener('click', () => { closeModal(addCardModal) });
-formCard.addEventListener('submit', submitCard);
-closePicModal.addEventListener('click', () => { closeModal(picModal) });
+// addCardModal.addEventListener('click', (evt) => clickOnOverlay(evt));
+addCardBtn.addEventListener('click', () => addCardModal.open());
+// closeCardModal.addEventListener('click', () => { closeModal(addCardModal) });
+// formCard.addEventListener('submit', submitCard);

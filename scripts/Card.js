@@ -1,11 +1,12 @@
-import  {openModal, removeCard, submitLike, getPicInfo, picModal, renderCard} from './utils.js';
+import  { removeCard, submitLike, renderCard, handlerCardClick} from './utils.js';
 
 export class Card {
 
-    constructor(name, link, selector) {
+    constructor(name, link, selector, handlerCardClick) {
         this._cardName = name;
         this._cardLink = link;
         this._selector = selector;
+        this._handlerCardClick = handlerCardClick;
     }
 
     _getCardTemplate() {
@@ -22,10 +23,7 @@ export class Card {
     }
 
     _setToggleCardListener(cardEl, selector) {
-        cardEl.querySelector(selector).addEventListener('click',(event) => {
-            openModal(picModal);
-            getPicInfo(event);
-        });
+        cardEl.querySelector(selector).addEventListener('click',this._handlerCardClick);
     }
 
     getCard() {
@@ -68,5 +66,5 @@ const initialCards = [
 ];
 
 initialCards.forEach((i) => {
-    renderCard(new Card(i.name, i.link, '#elements__card').getCard());
+    renderCard(new Card(i.name, i.link, '#elements__card', handlerCardClick).getCard());
 });

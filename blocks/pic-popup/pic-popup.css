@@ -1,7 +1,6 @@
 @import url("./__main/pic-popup__main.css");
 @import url("./__subtitle/pic-popup__subtitle.css");
 @import url("./__container/pic-popup__container.css");
-@import url("./__cancel/pic-popup__cancel.css");
 
 .pic-popup {
     display: flex;
