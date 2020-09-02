@@ -2,6 +2,7 @@ export class Popup {
     constructor(selector) {
         this._modal = document.querySelector(selector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._clickOnOverlay = this._clickOnOverlay.bind(this);
     }
 
     open() {
@@ -14,6 +15,14 @@ export class Popup {
         document.removeEventListener('keydown', this._handleEscClose);
     }
 
+
+    _clickOnOverlay(evt) {
+        const evtClasses = evt.target.classList;
+        if (evtClasses.contains('popup') || evtClasses.contains('pic-popup')) {
+            this.close();
+        }
+    }
+
     _handleEscClose(evt) {
         if (evt.key === 'Escape') {
             this.close();
@@ -21,7 +30,8 @@ export class Popup {
     }
 
     setEventListeners() {
+        this._modal.addEventListener('click', this._clickOnOverlay);
         this._modal.querySelector('.popup__cancel')
-            .addEventListener('click', () => this.close())
+                   .addEventListener('click', () => this.close())
     }
 }

@@ -1,7 +1,8 @@
-import { submitLike, removeCard, renderCard, handlerCardClick } from './utils.js';
+import { renderCard, handlerCardClick, initialCards } from './utils.js';
 import {Card} from './Card.js';
 import {UserInfo} from './UserInfo.js';
 import {PopupWithForm} from "./PopupWithForm.js";
+import {Section} from "./Section.js";
 
 const userSelectors = {
     name: '.profile__name',
@@ -10,13 +11,12 @@ const userSelectors = {
 
 const userInfo = new UserInfo(userSelectors);
 const editProfileModal = new PopupWithForm('.popup', submitProfileInfo);
-editProfileModal.setEventListeners();
 const addCardModal = new PopupWithForm('#popup-place', submitCard);
-addCardModal.setEventListeners();
 
 const editProfileBtn = document.querySelector('.profile__edit');
 const nameInput = document.querySelector('#popup__field-name');
 const descInput = document.querySelector('#popup__field-desc');
+
 
 const addCardBtn = document.querySelector('.profile__add-button');
 const submitBtn = document.querySelector('.popup__submit');
@@ -49,19 +49,20 @@ function submitCard(event) {
     disableBtn(submitBtn);
 }
 
-function clickOnOverlay(event) {
-    const evtClasses = event.target.classList;
-    if (evtClasses.contains('popup') || evtClasses.contains('pic-popup')) {
-        this.close();
-    }
-}
 
+editProfileModal.setEventListeners();
+addCardModal.setEventListeners();
 editProfileBtn.addEventListener('click', () => {
     editProfileModal.open();
     setProfileInfoInPopup(userInfo.getUserInfo());
 });
 
-// addCardModal.addEventListener('click', (evt) => clickOnOverlay(evt));
 addCardBtn.addEventListener('click', () => addCardModal.open());
-// closeCardModal.addEventListener('click', () => { closeModal(addCardModal) });
-// formCard.addEventListener('submit', submitCard);
+
+const initialList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        const card = new Card(item.name, item.link, '#elements__card', handlerCardClick).getCard();
+        initialList.addItem(card);
+    }}, '.elements__list');
+initialList.render();
