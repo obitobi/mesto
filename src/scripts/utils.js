@@ -1,12 +1,12 @@
-import {PopupWithImage} from "./PopupWithImage.js";
-
+//Кнопки
+const editProfileBtn = document.querySelector('.profile__edit');
+const addCardBtn = document.querySelector('.profile__add-button');
+const submitBtn = document.querySelector('.popup__submit');
+//Инпуты
+const nameInput = document.querySelector('#popup__field-name');
+const descInput = document.querySelector('#popup__field-desc');
 const placeName = document.querySelector('#popup-place__field-name');
 const placeLink = document.querySelector('#popup-place__field-desc');
-
-const picModal = new PopupWithImage('.pic-popup');
-picModal.setEventListeners();
-
-const handlerCardClick = (evt) => picModal.open(evt);
 
 function submitLike(event) {
     event.target.classList.toggle('elements__like_liked');
@@ -15,11 +15,6 @@ function submitLike(event) {
 function removeCard(event) {
     event.target.parentElement.remove();
 }
-
-function renderCard(container, cardEl) {
-    container.prepend(cardEl);
-}
-
 
 const initialCards = [
     {
@@ -48,6 +43,14 @@ const initialCards = [
     }
 ];
 
+const validationSettings = {
+    form: '.popup__container',
+    inputs: '.popup__field',
+    submitBtn: '.popup__submit',
+    inactiveBtn: '.popup__submit_disabled',
+    inputErr: '.popup__input-error',
+    errorClass: '.popup__input-error_visible'
+};
 
-export { submitLike, removeCard, renderCard, handlerCardClick, initialCards, placeName,
-    placeLink }
+export { submitLike, removeCard, initialCards, placeName, placeLink, validationSettings,
+    editProfileBtn, addCardBtn, submitBtn, nameInput, descInput }

@@ -1,7 +1,10 @@
-import { placeName, placeLink, handlerCardClick, initialCards } from './utils.js';
+import { placeName, placeLink, editProfileBtn,
+    addCardBtn, nameInput, descInput,
+    submitBtn, initialCards, validationSettings } from './utils.js';
 import {Card} from './Card.js';
 import {UserInfo} from './UserInfo.js';
 import {PopupWithForm} from "./PopupWithForm.js";
+import {PopupWithImage} from "./PopupWithImage.js";
 import {Section} from "./Section.js";
 import {FormValidator} from "./FormValidator.js";
 import '../pages/index.css';
@@ -10,19 +13,13 @@ const userSelectors = {
     name: '.profile__name',
     info: '.profile__description'
 }
-
+//Создание объектов
 const userInfo = new UserInfo(userSelectors);
 const editProfileModal = new PopupWithForm('.popup', submitProfileInfo);
 const addCardModal = new PopupWithForm('#popup-place', submitCard);
+const picModal = new PopupWithImage('.pic-popup');
 
-const editProfileBtn = document.querySelector('.profile__edit');
-const nameInput = document.querySelector('#popup__field-name');
-const descInput = document.querySelector('#popup__field-desc');
-
-
-const addCardBtn = document.querySelector('.profile__add-button');
-const submitBtn = document.querySelector('.popup__submit');
-
+const handlerCardClick = (evt) => picModal.open(evt);
 
 function setProfileInfoInPopup({name, info}) {
     nameInput.value = name;
@@ -54,16 +51,17 @@ function submitCard(event) {
     disableBtn(submitBtn);
 }
 
-
 editProfileModal.setEventListeners();
 addCardModal.setEventListeners();
+picModal.setEventListeners();
+
 editProfileBtn.addEventListener('click', () => {
     editProfileModal.open();
     setProfileInfoInPopup(userInfo.getUserInfo());
 });
 
 addCardBtn.addEventListener('click', () => addCardModal.open());
-
+//Стартовая инициализация
 const initialList = new Section({
     items: initialCards,
     renderer: (item) => {
@@ -71,3 +69,9 @@ const initialList = new Section({
         initialList.addItem(card);
     }}, '.elements__list');
 initialList.render();
+
+//Включение валидации
+Array.from(document.querySelectorAll(validationSettings.form))
+    .forEach((item) => {
+        new FormValidator(validationSettings, item).enableValidation();
+    });

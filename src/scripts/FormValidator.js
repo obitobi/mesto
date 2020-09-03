@@ -64,17 +64,3 @@ export class FormValidator {
     }
 
 }
-
-const validationSettings = {
-    form: '.popup__container',
-    inputs: '.popup__field',
-    submitBtn: '.popup__submit',
-    inactiveBtn: '.popup__submit_disabled',
-    inputErr: '.popup__input-error',
-    errorClass: '.popup__input-error_visible'
-};
-
-Array.from(document.querySelectorAll(validationSettings.form))
-     .forEach((item) => {
-        new FormValidator(validationSettings, item).enableValidation();
-});
