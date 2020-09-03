@@ -3,6 +3,7 @@ import {Card} from './Card.js';
 import {UserInfo} from './UserInfo.js';
 import {PopupWithForm} from "./PopupWithForm.js";
 import {Section} from "./Section.js";
+import '../pages/index.css';
 
 const userSelectors = {
     name: '.profile__name',
