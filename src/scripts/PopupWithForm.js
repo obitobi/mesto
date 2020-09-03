@@ -11,14 +11,6 @@ export class PopupWithForm extends Popup {
         return this._modal.querySelectorAll('.popup__field');
     }
 
-    getFirstFieldValue() {
-        return this._modal.querySelector('#popup-place__field-name').value;
-    }
-
-    getSecondFieldValue() {
-        return this._modal.querySelector('#popup-place__field-desc').value;
-    }
-
     setEventListeners() {
         super.setEventListeners();
         this._modal.addEventListener('submit', this._submit);

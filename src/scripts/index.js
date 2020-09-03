@@ -1,4 +1,4 @@
-import { renderCard, handlerCardClick, initialCards } from './utils.js';
+import { placeName, placeLink, handlerCardClick, initialCards } from './utils.js';
 import {Card} from './Card.js';
 import {UserInfo} from './UserInfo.js';
 import {PopupWithForm} from "./PopupWithForm.js";
@@ -38,13 +38,16 @@ function disableBtn(btnEl) {
     btnEl.disabled = true;
 }
 
+const formRender = new Section({
+    items: [],
+    renderer: {}
+}, '.elements__list');
+
 function submitCard(event) {
     event.preventDefault();
-    renderCard(new Card(
-        addCardModal.getFirstFieldValue(),
-        addCardModal.getSecondFieldValue(),
-        '#elements__card',
-        handlerCardClick).getCard());
+    formRender.addItem(
+        new Card(placeName.value, placeLink.value, '#elements__card', handlerCardClick).getCard()
+    );
     addCardModal.close();
     disableBtn(submitBtn);
 }

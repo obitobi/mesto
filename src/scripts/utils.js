@@ -1,6 +1,7 @@
 import {PopupWithImage} from "./PopupWithImage.js";
 
-const cardsList = document.querySelector('.elements__list');
+const placeName = document.querySelector('#popup-place__field-name');
+const placeLink = document.querySelector('#popup-place__field-desc');
 
 const picModal = new PopupWithImage('.pic-popup');
 picModal.setEventListeners();
@@ -48,4 +49,5 @@ const initialCards = [
 ];
 
 
-export { submitLike, removeCard, renderCard, handlerCardClick, initialCards }
+export { submitLike, removeCard, renderCard, handlerCardClick, initialCards, placeName,
+    placeLink }
