@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/scripts/index.js',
+    entry: './src/pages/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js'
@@ -26,12 +26,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff2?|ttf)$/i,
-                use: [
-                    {
-                        loader: 'file-loader'
-                    }
-                ]
+                test: /.(png|svg|jpg|gif)$/,
+                loader: 'file-loader?name=./images/[contenthash].[ext]'
+            },
+            {
+                test: /.(eot|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=./vendor/[contenthash].[ext]',
             },
             {
                 test: /\.html$/i,
