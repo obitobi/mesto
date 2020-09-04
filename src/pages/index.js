@@ -11,6 +11,8 @@ const userSelectors = {
     name: '.profile__name',
     info: '.profile__description'
 }
+//Спасибо за такое тщательное ревью, многое осознал
+//например: объявления дом-элемента в конструкторе, чтобы не искать его каждый раз
 //Создание объектов
 const userInfo = new UserInfo(userSelectors);
 const editProfileModal = new PopupWithForm('.popup', submitProfileInfo);
