@@ -37,10 +37,11 @@ const validationSettings = {
     form: '.popup__container',
     inputs: '.popup__field',
     submitBtn: '.popup__submit',
-    inactiveBtn: '.popup__submit_disabled',
+    inactiveBtn: 'popup__submit_disabled',
     inputErr: '.popup__input-error',
     errorClass: '.popup__input-error_visible',
-    errorTypeField: '.popup__field_type_error'
+    errorTypeField: '.popup__field_type_error',
+    errorInputActive: 'popup__input-error_active'
 };
 
 
