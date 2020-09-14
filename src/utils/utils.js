@@ -5,6 +5,8 @@ const addCardBtn = document.querySelector('.profile__add-button');
 const nameInput = document.querySelector('#popup__field-name');
 const descInput = document.querySelector('#popup__field-desc');
 
+const url = 'https://mesto.nomoreparties.co/v1/cohort-15';
+const token = '49a75c0f-916c-427e-bed4-87859e997b2f';
 
 const initialCards = [
     {
@@ -45,4 +47,4 @@ const validationSettings = {
 };
 
 
-export { initialCards, validationSettings, editProfileBtn, addCardBtn, nameInput, descInput }
+export { initialCards, validationSettings, editProfileBtn, addCardBtn, nameInput, descInput, url, token }

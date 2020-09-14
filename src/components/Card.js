@@ -1,10 +1,12 @@
 export class Card {
 
-    constructor(name, link, selector, handlerCardClick) {
+    constructor(name, link, likes, selector, handlerCardClick, handlerCardDelete) {
         this._cardName = name;
         this._cardLink = link;
+        this._likes = likes;
         this._selector = selector;
         this._handlerCardClick = handlerCardClick;
+        this._handlerCardDelete = handlerCardDelete;
     }
 
     _getCardTemplate() {
@@ -30,6 +32,7 @@ export class Card {
         picture.src = this._cardLink;
         picture.alt = this._cardName;
         this._cardElement.querySelector('.elements__pic-description').textContent = this._cardName;
+        this._cardElement.querySelector('.elements__likes').textContent = this._likes;
         this._setCustomCardListener(this._cardElement, '.elements__like', this.submitLike);
         this._setCustomCardListener(this._cardElement, '.elements__trash', this.removeCard);
         this._setCustomCardListener(this._cardElement, '.elements__pic', this._handlerCardClick);

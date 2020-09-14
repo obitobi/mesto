@@ -1,4 +1,5 @@
 export class Popup {
+
     constructor(selector) {
         this._modal = document.querySelector(selector);
         this._handleEscClose = this._handleEscClose.bind(this);
@@ -14,7 +15,6 @@ export class Popup {
         this._modal.classList.remove('popup_opened');
         document.removeEventListener('keydown', this._handleEscClose);
     }
-
 
     _clickOnOverlay(evt) {
         const evtClasses = evt.target.classList;
