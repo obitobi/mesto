@@ -32,6 +32,6 @@ export class Popup {
     setEventListeners() {
         this._modal.addEventListener('click', this._clickOnOverlay);
         this._modal.querySelector('.popup__cancel')
-                   .addEventListener('click', () => this.close())
+                   .addEventListener('click', () => this.close());
     }
 }

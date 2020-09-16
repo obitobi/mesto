@@ -1,9 +1,12 @@
 //Кнопки
 const editProfileBtn = document.querySelector('.profile__edit');
+const editProfileAvatarBtn = document.querySelector('.profile__container');
 const addCardBtn = document.querySelector('.profile__add-button');
 //Инпуты
 const nameInput = document.querySelector('#popup__field-name');
 const descInput = document.querySelector('#popup__field-desc');
+const avatarInput = document.querySelector('#update-avatar-popup__pic-link');
+const avatarLink = document.querySelector('.profile__avatar');
 
 const url = 'https://mesto.nomoreparties.co/v1/cohort-15';
 const token = '49a75c0f-916c-427e-bed4-87859e997b2f';
@@ -47,4 +50,5 @@ const validationSettings = {
 };
 
 
-export { initialCards, validationSettings, editProfileBtn, addCardBtn, nameInput, descInput, url, token }
+export { initialCards, validationSettings, editProfileBtn, avatarInput,
+    addCardBtn, nameInput, descInput, url, token, editProfileAvatarBtn, avatarLink }
