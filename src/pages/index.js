@@ -58,7 +58,9 @@ api.getInitialCards().then((cards) => {
     .catch((rej) => console.log(rej));
 
 function createCard(data, selector) {
-    const isMine = data.owner._id === userInfo.id;
+    //Нужно для случая создания карточки
+    let isMine = true;
+    isMine = data.owner._id === userInfo.id;
     let isLiked = false;
     data.likes.forEach((item) => {
         if (item._id === userInfo.id) {
