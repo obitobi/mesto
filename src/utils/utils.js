@@ -11,33 +11,6 @@ const avatarLink = document.querySelector('.profile__avatar');
 const url = 'https://mesto.nomoreparties.co/v1/cohort-15';
 const token = '49a75c0f-916c-427e-bed4-87859e997b2f';
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 const validationSettings = {
     form: '.popup__container',
     inputs: '.popup__field',
@@ -50,5 +23,5 @@ const validationSettings = {
 };
 
 
-export { initialCards, validationSettings, editProfileBtn, avatarInput,
+export { validationSettings, editProfileBtn, avatarInput,
     addCardBtn, nameInput, descInput, url, token, editProfileAvatarBtn, avatarLink }

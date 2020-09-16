@@ -3,7 +3,6 @@ import {
     addCardBtn,
     nameInput,
     descInput,
-    initialCards,
     editProfileAvatarBtn,
     validationSettings,
     url,

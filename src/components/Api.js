@@ -107,22 +107,3 @@ export class Api {
         });
     }
 }
-
-
-/*
-fetch('https://mesto.nomoreparties.co/v1/cohort-15/users/me/avatar', {
-            method: 'PATCH',
-            headers: {
-                authorization: '49a75c0f-916c-427e-bed4-87859e997b2f',
-        'Content-Type': 'application/json'
-    },
-            body: JSON.stringify({
-                avatar: 'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABYQp33Z3D9uGJK0IZsYfvENQpSz4zoSrjb8v5CCl4UTiFDe7Z_yovhieDFhJtGm2Rh4LoleJfHwHdyRDMtezwqojkDXH.jpg?r=77f'
-            })
-        }).then((res) => {
-            if(!res.ok) {
-                return Promise.reject('Error in updateProfileAvatar');
-            } return res.json();
-        })
-
-* */
