@@ -22,6 +22,14 @@ const validationSettings = {
     errorInputActive: 'popup__input-error_active'
 };
 
+function renderLoading(isLoading, button) {
+    if (isLoading) {
+        button.textContent = 'Сохранение...';
+    } else {
+        button.textContent = 'Сохранить';
+    }
+}
 
 export { validationSettings, editProfileBtn, avatarInput,
-    addCardBtn, nameInput, descInput, url, token, editProfileAvatarBtn, avatarLink }
+    addCardBtn, nameInput, descInput, url, token,
+    editProfileAvatarBtn, avatarLink, renderLoading }

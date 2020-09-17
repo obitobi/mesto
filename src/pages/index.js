@@ -8,7 +8,8 @@ import {
     url,
     avatarInput,
     token,
-    avatarLink
+    avatarLink,
+    renderLoading
 } from '../utils/utils.js';
 import {Card} from '../components/Card.js';
 import {UserInfo} from '../components/UserInfo.js';
@@ -43,19 +44,6 @@ const picModal = new PopupWithImage('.pic-popup');
 const submitModal = new PopupWithSubmit('#confirm-popup');
 const avatarModal = new PopupWithForm('#update-avatar-popup', submitAvatar);
 
-//Getting initialCards
-api.getInitialCards().then((cards) => {
-    const initialList = new Section({
-        items: cards,
-        renderer: (item) => {
-            const card = createCard(item,'#elements__card');
-            initialList.addItem(card);
-        }
-    }, '.elements__list');
-    return initialList;
-}).then((cards) => cards.render())
-    .catch((rej) => console.log(rej));
-
 function createCard(data, selector) {
     //Нужно для случая создания карточки
     let isMine = true;
@@ -78,9 +66,9 @@ function createCard(data, selector) {
                         .then((res) => {
                             card.removeCard(evt);
                             console.log('Card was removed with status: '+ res.status);
+                            submitModal.close();
                         })
                         .catch((rej) => console.log(rej));
-                    submitModal.close();
                     });
                 handlerTrashClick();
             },
@@ -103,7 +91,7 @@ function createCard(data, selector) {
         }
     );
     card.setLiked(isLiked);
-    return card.getCard();
+    return card;
 }
 
 function handlerCardClick(name, link) {
@@ -129,10 +117,12 @@ function submitProfileInfo(event, {nameField, descriptionField}) {
     const submitBtn = event.target.querySelector('.popup__submit');
     renderLoading(true, submitBtn);
     api.updateProfileInfo(nameField, descriptionField)
-        .then((data) => userInfo.setUserInfo(data.name, data.about))
+        .then((data) => {
+            userInfo.setUserInfo(data.name, data.about);
+            editProfileModal.close();
+        })
         .catch((rej) => console.log(rej))
         .finally(() => renderLoading(false, submitBtn));
-    editProfileModal.close();
 }
 
 function submitAvatar(event, {descriptionField}) {
@@ -142,10 +132,10 @@ function submitAvatar(event, {descriptionField}) {
     api.updateProfileAvatar(descriptionField)
         .then((data) => {
             userInfo.setAvatar(data.avatar);
+            avatarModal.close();
         })
         .catch((rej) => console.log(rej))
         .finally(() => renderLoading(false, submitBtn));
-    avatarModal.close();
 }
 
 const formRender = new Section({
@@ -157,18 +147,11 @@ function submitCard(event, {nameField, descriptionField}) {
     event.preventDefault();
     renderLoading(true, addCardModal.submitButton);
     api.addNewCard(nameField, descriptionField).then((card) => {
-        formRender.addItem(createCard(card, '#elements__card'));
-    }).finally(() => renderLoading(false, addCardModal.submitButton));
-    FormValidator.disableBtn(addCardModal.submitButton);
-    addCardModal.close();
-}
-
-function renderLoading(isLoading, button) {
-    if (isLoading) {
-        button.textContent = 'Сохранение...';
-    } else {
-        button.textContent = 'Сохранить';
-    }
+        formRender.addItem(createCard(card, '#elements__card').getCard(), true);
+        FormValidator.disableBtn(addCardModal.submitButton);
+        addCardModal.close();
+    }).catch((rej) => console.log(rej))
+        .finally(() => renderLoading(false, addCardModal.submitButton));
 }
 
 //Включение валидации
@@ -176,7 +159,6 @@ Array.from(document.querySelectorAll(validationSettings.form))
     .forEach((item) => {
         new FormValidator(validationSettings, item).enableValidation();
     });
-
 
 editProfileModal.setEventListeners();
 addCardModal.setEventListeners();
@@ -193,7 +175,22 @@ editProfileAvatarBtn.addEventListener('click', () => {
 });
 addCardBtn.addEventListener('click', () => addCardModal.open());
 
-api.getProfileInfo().then((data) => {
-    userInfo.setUserInfo(data.name, data.about, data._id);
-    userInfo.setAvatar(data.avatar);
-})
+Promise.all([
+    api.getProfileInfo(),
+    api.getInitialCards()
+]).then((values) => {
+    const [userData, initialCards] = values;
+    userInfo.setUserInfo(userData.name, userData.about, userData._id);
+    userInfo.setAvatar(userData.avatar);
+
+    const initialList = new Section({
+        items: initialCards,
+        renderer: (item) => {
+            const card = createCard(item,'#elements__card');
+            initialList.addItem(card.getCard(), card.getIsMine());
+        }
+    }, '.elements__list');
+    return initialList;
+}).then((cards) => cards.render())
+    .catch((rej) => console.log(rej));
+

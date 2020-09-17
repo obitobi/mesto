@@ -17,6 +17,10 @@ export class Card {
         this._isLiked = isLiked;
     }
 
+    getIsMine() {
+        return this._isMine;
+    }
+
     setLikes(evt, likes) {
         this._likes = likes;
         evt.target.parentElement.querySelector('.elements__likes').textContent = likes;
